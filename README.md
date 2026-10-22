@@ -2,7 +2,7 @@
 
 An AI-powered productivity platform that automates everyday workplace tasks. It is one integrated dashboard with five AI features, a secure sign-in, and a 3D interactive landing page.
 
-**Live demo:** _add your published Lovable URL here_
+**Live demo:** _https://ai-workflowproduction-assistant.lovable.app_
 **Repository:** _add your GitHub repo URL here_
 
 ---
