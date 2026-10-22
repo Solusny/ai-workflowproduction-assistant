@@ -72,7 +72,7 @@ export function Hero({ onReady }: { onReady: () => void }) {
     }
   }, [])
 
-  const open = (f: Feature) => navigate(f.path)
+  const open = (f: Feature) => navigate({ to: f.path })
 
   return (
     <section ref={section} className="relative h-svh min-h-[640px] w-full overflow-hidden bg-page" aria-label="WorkFlow AI introduction">

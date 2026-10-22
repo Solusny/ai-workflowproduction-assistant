@@ -17,7 +17,7 @@ export function LogoMark({ size = 32 }: { size?: number }) {
   )
 }
 
-export function Logo({ to = '/' }: { to?: string }) {
+export function Logo({ to = '/' }: { to?: '/' | '/app' }) {
   return (
     <Link to={to} className="flex items-center gap-2.5 font-extrabold tracking-tight text-ink" aria-label="WorkFlow AI home">
       <LogoMark />

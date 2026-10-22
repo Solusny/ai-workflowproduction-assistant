@@ -9,7 +9,7 @@ export interface Feature {
   tagline: string
   description: string
   icon: LucideIcon
-  path: string
+  path: '/app/email' | '/app/meetings' | '/app/tasks' | '/app/research' | '/app/chat'
 }
 
 /** The five AI tools, in landing-page milestone order. Shared by the 3D hub, landing sections and dashboard. */
