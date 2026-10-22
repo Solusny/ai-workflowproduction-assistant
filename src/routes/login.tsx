@@ -10,13 +10,13 @@ import { PrivacyContent, TermsContent } from "@/wf/components/ui/LegalContent";
 import { safeRedirect, useAuth } from "@/wf/auth/AuthProvider";
 import { EMAIL_RE, friendlyAuthError, passwordStrength } from "@/wf/auth/errors";
 
-type Search = { redirect?: string };
+type Search = { redirect?: string | undefined };
 const REDIRECT_KEY = "wf-post-login";
 
 export const Route = createFileRoute("/login")({
   ssr: false,
   validateSearch: (s: Record<string, unknown>): Search => ({
-    redirect: typeof s.redirect === "string" ? s.redirect : undefined,
+    redirect: typeof s["redirect"] === "string" ? s["redirect"] : undefined,
   }),
   beforeLoad: async ({ search }) => {
     const { data } = await supabase.auth.getSession();
