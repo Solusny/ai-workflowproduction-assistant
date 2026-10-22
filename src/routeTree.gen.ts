@@ -13,6 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
 import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
+import { Route as AuthenticatedAppChatRouteImport } from './routes/_authenticated/app.chat'
+import { Route as AuthenticatedAppEmailRouteImport } from './routes/_authenticated/app.email'
+import { Route as AuthenticatedAppMeetingsRouteImport } from './routes/_authenticated/app.meetings'
+import { Route as AuthenticatedAppResearchRouteImport } from './routes/_authenticated/app.research'
+import { Route as AuthenticatedAppTasksRouteImport } from './routes/_authenticated/app.tasks'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -33,14 +38,51 @@ const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAppRoute,
 } as any)
+const AuthenticatedAppChatRoute = AuthenticatedAppChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppEmailRoute = AuthenticatedAppEmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppMeetingsRoute =
+  AuthenticatedAppMeetingsRouteImport.update({
+    id: '/meetings',
+    path: '/meetings',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppResearchRoute =
+  AuthenticatedAppResearchRouteImport.update({
+    id: '/research',
+    path: '/research',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppTasksRoute = AuthenticatedAppTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
+  '/app/chat': typeof AuthenticatedAppChatRoute
+  '/app/email': typeof AuthenticatedAppEmailRoute
+  '/app/meetings': typeof AuthenticatedAppMeetingsRoute
+  '/app/research': typeof AuthenticatedAppResearchRoute
+  '/app/tasks': typeof AuthenticatedAppTasksRoute
   '/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/chat': typeof AuthenticatedAppChatRoute
+  '/app/email': typeof AuthenticatedAppEmailRoute
+  '/app/meetings': typeof AuthenticatedAppMeetingsRoute
+  '/app/research': typeof AuthenticatedAppResearchRoute
+  '/app/tasks': typeof AuthenticatedAppTasksRoute
   '/app': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesById {
@@ -48,18 +90,43 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
+  '/_authenticated/app/chat': typeof AuthenticatedAppChatRoute
+  '/_authenticated/app/email': typeof AuthenticatedAppEmailRoute
+  '/_authenticated/app/meetings': typeof AuthenticatedAppMeetingsRoute
+  '/_authenticated/app/research': typeof AuthenticatedAppResearchRoute
+  '/_authenticated/app/tasks': typeof AuthenticatedAppTasksRoute
   '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/app/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/chat'
+    | '/app/email'
+    | '/app/meetings'
+    | '/app/research'
+    | '/app/tasks'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app'
+  to:
+    | '/'
+    | '/app/chat'
+    | '/app/email'
+    | '/app/meetings'
+    | '/app/research'
+    | '/app/tasks'
+    | '/app'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/_authenticated/app'
+    | '/_authenticated/app/chat'
+    | '/_authenticated/app/email'
+    | '/_authenticated/app/meetings'
+    | '/_authenticated/app/research'
+    | '/_authenticated/app/tasks'
     | '/_authenticated/app/'
   fileRoutesById: FileRoutesById
 }
@@ -98,14 +165,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
       parentRoute: typeof AuthenticatedAppRoute
     }
+    '/_authenticated/app/chat': {
+      id: '/_authenticated/app/chat'
+      path: '/chat'
+      fullPath: '/app/chat'
+      preLoaderRoute: typeof AuthenticatedAppChatRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/email': {
+      id: '/_authenticated/app/email'
+      path: '/email'
+      fullPath: '/app/email'
+      preLoaderRoute: typeof AuthenticatedAppEmailRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/meetings': {
+      id: '/_authenticated/app/meetings'
+      path: '/meetings'
+      fullPath: '/app/meetings'
+      preLoaderRoute: typeof AuthenticatedAppMeetingsRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/research': {
+      id: '/_authenticated/app/research'
+      path: '/research'
+      fullPath: '/app/research'
+      preLoaderRoute: typeof AuthenticatedAppResearchRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/tasks': {
+      id: '/_authenticated/app/tasks'
+      path: '/tasks'
+      fullPath: '/app/tasks'
+      preLoaderRoute: typeof AuthenticatedAppTasksRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
   }
 }
 
 interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppChatRoute: typeof AuthenticatedAppChatRoute
+  AuthenticatedAppEmailRoute: typeof AuthenticatedAppEmailRoute
+  AuthenticatedAppMeetingsRoute: typeof AuthenticatedAppMeetingsRoute
+  AuthenticatedAppResearchRoute: typeof AuthenticatedAppResearchRoute
+  AuthenticatedAppTasksRoute: typeof AuthenticatedAppTasksRoute
   AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute
 }
 
 const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppChatRoute: AuthenticatedAppChatRoute,
+  AuthenticatedAppEmailRoute: AuthenticatedAppEmailRoute,
+  AuthenticatedAppMeetingsRoute: AuthenticatedAppMeetingsRoute,
+  AuthenticatedAppResearchRoute: AuthenticatedAppResearchRoute,
+  AuthenticatedAppTasksRoute: AuthenticatedAppTasksRoute,
   AuthenticatedAppIndexRoute: AuthenticatedAppIndexRoute,
 }
 
