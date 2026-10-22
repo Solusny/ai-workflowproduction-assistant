@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
 import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
+import { Route as AuthenticatedAppAccountRouteImport } from './routes/_authenticated/app.account'
 import { Route as AuthenticatedAppChatRouteImport } from './routes/_authenticated/app.chat'
 import { Route as AuthenticatedAppEmailRouteImport } from './routes/_authenticated/app.email'
+import { Route as AuthenticatedAppHistoryRouteImport } from './routes/_authenticated/app.history'
 import { Route as AuthenticatedAppMeetingsRouteImport } from './routes/_authenticated/app.meetings'
 import { Route as AuthenticatedAppResearchRouteImport } from './routes/_authenticated/app.research'
 import { Route as AuthenticatedAppTasksRouteImport } from './routes/_authenticated/app.tasks'
@@ -38,6 +40,11 @@ const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAppRoute,
 } as any)
+const AuthenticatedAppAccountRoute = AuthenticatedAppAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
 const AuthenticatedAppChatRoute = AuthenticatedAppChatRouteImport.update({
   id: '/chat',
   path: '/chat',
@@ -46,6 +53,11 @@ const AuthenticatedAppChatRoute = AuthenticatedAppChatRouteImport.update({
 const AuthenticatedAppEmailRoute = AuthenticatedAppEmailRouteImport.update({
   id: '/email',
   path: '/email',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppHistoryRoute = AuthenticatedAppHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => AuthenticatedAppRoute,
 } as any)
 const AuthenticatedAppMeetingsRoute =
@@ -69,8 +81,10 @@ const AuthenticatedAppTasksRoute = AuthenticatedAppTasksRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AuthenticatedAppRouteWithChildren
+  '/app/account': typeof AuthenticatedAppAccountRoute
   '/app/chat': typeof AuthenticatedAppChatRoute
   '/app/email': typeof AuthenticatedAppEmailRoute
+  '/app/history': typeof AuthenticatedAppHistoryRoute
   '/app/meetings': typeof AuthenticatedAppMeetingsRoute
   '/app/research': typeof AuthenticatedAppResearchRoute
   '/app/tasks': typeof AuthenticatedAppTasksRoute
@@ -78,8 +92,10 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/account': typeof AuthenticatedAppAccountRoute
   '/app/chat': typeof AuthenticatedAppChatRoute
   '/app/email': typeof AuthenticatedAppEmailRoute
+  '/app/history': typeof AuthenticatedAppHistoryRoute
   '/app/meetings': typeof AuthenticatedAppMeetingsRoute
   '/app/research': typeof AuthenticatedAppResearchRoute
   '/app/tasks': typeof AuthenticatedAppTasksRoute
@@ -90,8 +106,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
+  '/_authenticated/app/account': typeof AuthenticatedAppAccountRoute
   '/_authenticated/app/chat': typeof AuthenticatedAppChatRoute
   '/_authenticated/app/email': typeof AuthenticatedAppEmailRoute
+  '/_authenticated/app/history': typeof AuthenticatedAppHistoryRoute
   '/_authenticated/app/meetings': typeof AuthenticatedAppMeetingsRoute
   '/_authenticated/app/research': typeof AuthenticatedAppResearchRoute
   '/_authenticated/app/tasks': typeof AuthenticatedAppTasksRoute
@@ -102,8 +120,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/app/account'
     | '/app/chat'
     | '/app/email'
+    | '/app/history'
     | '/app/meetings'
     | '/app/research'
     | '/app/tasks'
@@ -111,8 +131,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/app/account'
     | '/app/chat'
     | '/app/email'
+    | '/app/history'
     | '/app/meetings'
     | '/app/research'
     | '/app/tasks'
@@ -122,8 +144,10 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/_authenticated/app'
+    | '/_authenticated/app/account'
     | '/_authenticated/app/chat'
     | '/_authenticated/app/email'
+    | '/_authenticated/app/history'
     | '/_authenticated/app/meetings'
     | '/_authenticated/app/research'
     | '/_authenticated/app/tasks'
@@ -165,6 +189,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
       parentRoute: typeof AuthenticatedAppRoute
     }
+    '/_authenticated/app/account': {
+      id: '/_authenticated/app/account'
+      path: '/account'
+      fullPath: '/app/account'
+      preLoaderRoute: typeof AuthenticatedAppAccountRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
     '/_authenticated/app/chat': {
       id: '/_authenticated/app/chat'
       path: '/chat'
@@ -177,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/email'
       fullPath: '/app/email'
       preLoaderRoute: typeof AuthenticatedAppEmailRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/history': {
+      id: '/_authenticated/app/history'
+      path: '/history'
+      fullPath: '/app/history'
+      preLoaderRoute: typeof AuthenticatedAppHistoryRouteImport
       parentRoute: typeof AuthenticatedAppRoute
     }
     '/_authenticated/app/meetings': {
@@ -204,8 +242,10 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppAccountRoute: typeof AuthenticatedAppAccountRoute
   AuthenticatedAppChatRoute: typeof AuthenticatedAppChatRoute
   AuthenticatedAppEmailRoute: typeof AuthenticatedAppEmailRoute
+  AuthenticatedAppHistoryRoute: typeof AuthenticatedAppHistoryRoute
   AuthenticatedAppMeetingsRoute: typeof AuthenticatedAppMeetingsRoute
   AuthenticatedAppResearchRoute: typeof AuthenticatedAppResearchRoute
   AuthenticatedAppTasksRoute: typeof AuthenticatedAppTasksRoute
@@ -213,8 +253,10 @@ interface AuthenticatedAppRouteChildren {
 }
 
 const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppAccountRoute: AuthenticatedAppAccountRoute,
   AuthenticatedAppChatRoute: AuthenticatedAppChatRoute,
   AuthenticatedAppEmailRoute: AuthenticatedAppEmailRoute,
+  AuthenticatedAppHistoryRoute: AuthenticatedAppHistoryRoute,
   AuthenticatedAppMeetingsRoute: AuthenticatedAppMeetingsRoute,
   AuthenticatedAppResearchRoute: AuthenticatedAppResearchRoute,
   AuthenticatedAppTasksRoute: AuthenticatedAppTasksRoute,
