@@ -33,6 +33,8 @@ function greeting() {
 }
 
 export default function OverviewPage() {
+  const { displayName } = useAuth()
+  const firstName = displayName.split(' ')[0] || 'there'
   const maxUsage = Math.max(...usageByTool.map((u) => u.count))
   return (
     <div className="mx-auto max-w-7xl space-y-6">
