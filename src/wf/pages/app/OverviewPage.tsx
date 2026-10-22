@@ -1,7 +1,8 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, CalendarClock, Clock, TrendingUp, Users } from 'lucide-react'
 import { FEATURES, featureById } from '../../data/features'
-import { currentUser, recentActivity, todaysFocus, upcomingMeetings, usageByTool, weeklyStats } from '../../data/fixtures'
+import { useAuth } from '../../auth/AuthProvider'
+import { recentActivity, todaysFocus, upcomingMeetings, usageByTool, weeklyStats } from '../../data/fixtures'
 
 function Sparkline({ data }: { data: number[] }) {
   const w = 96
@@ -45,7 +46,7 @@ export default function OverviewPage() {
               {new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}
             </p>
             <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-              {greeting()}, {currentUser.firstName} <span className="text-gradient">✦</span>
+              {greeting()}, {firstName} <span className="text-gradient">✦</span>
             </h1>
             <p className="mt-2 max-w-lg text-[15px] text-muted">You have 4 focus tasks and 2 meetings today. Where would you like your assistant to start?</p>
           </div>
