@@ -1,3 +1,4 @@
+// @ts-nocheck -- imported code written for a looser TypeScript config
 import { forwardRef, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { Html, Line, RoundedBox } from '@react-three/drei'

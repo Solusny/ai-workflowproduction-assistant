@@ -55,8 +55,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const user = session?.user ?? null
     const meta = (user?.user_metadata ?? {}) as Record<string, string | undefined>
     const displayName =
-      profile?.display_name || meta.full_name || meta.name || user?.email?.split('@')[0] || ''
-    const avatarUrl = profile?.avatar_url || meta.avatar_url || meta.picture || null
+      profile?.display_name || meta["full_name"] || meta["name"] || user?.email?.split('@')[0] || ''
+    const avatarUrl = profile?.avatar_url || meta["avatar_url"] || meta["picture"] || null
     const initials =
       displayName
         .split(/[\s._-]+/)
