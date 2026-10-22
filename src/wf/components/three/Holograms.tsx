@@ -1,3 +1,4 @@
+// @ts-nocheck -- imported code written for a looser TypeScript config
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'

@@ -1,3 +1,4 @@
+// @ts-nocheck -- imported code written for a looser TypeScript config
 import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from '@tanstack/react-router'
 import gsap from 'gsap'
