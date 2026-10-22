@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '@tanstack/react-router'
 import { ArrowUpRight, CalendarClock, Clock, TrendingUp, Users } from 'lucide-react'
 import { FEATURES, featureById } from '../../data/features'
 import { currentUser, recentActivity, todaysFocus, upcomingMeetings, usageByTool, weeklyStats } from '../../data/fixtures'

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router'
+import { NavLink, Outlet, useLocation } from '@tanstack/react-router'
 import { Bell, LayoutGrid, Menu, Plus, Search, X } from 'lucide-react'
 import { FEATURES } from '../../data/features'
 import { currentUser } from '../../data/fixtures'

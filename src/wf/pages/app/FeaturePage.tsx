@@ -1,4 +1,4 @@
-import { Navigate, useParams } from 'react-router'
+import { Navigate, useParams } from '@tanstack/react-router'
 import { featureById } from '../../data/features'
 import { WORKSPACES } from '../../data/workspaces'
 import { ToolWorkspace } from '../../components/app/ToolWorkspace'

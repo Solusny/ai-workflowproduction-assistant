@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '@tanstack/react-router'
 import { ArrowRight, ArrowUpRight, Braces, KeyRound, ShieldCheck, Sparkles, Wand2, MousePointerClick } from 'lucide-react'
 import { FEATURES } from '../../data/features'
 import { Logo } from '../ui/Logo'
